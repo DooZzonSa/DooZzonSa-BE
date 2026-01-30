@@ -61,6 +61,4 @@ public class PolicyItemService {
         int policyItemCount = enterprisePolicyItemRepository.countByPolicyItem(policyItem);
         return (policyItemCount * 100) / enterpriseCount;
     }
-
-//    public List<PolicyItem> findBy
 }
