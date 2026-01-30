@@ -33,6 +33,7 @@ public class PolicyItemService {
 
     private List<PolicyItemDto> getPolicyItemDtos(final List<PolicyItem> policyItems, final int enterpriseCount) {
         return policyItems.stream()
+                .filter(policyItem -> !policyItem.isLevelOf(RiskLevel.NONE))
                 .map((policyItem) -> {
                     int averageCollectionRate = calculateAverageCollectionRate(policyItem, enterpriseCount);
                     return new PolicyItemDto(policyItem.getName(), averageCollectionRate, policyItem.getRiskLevel());
