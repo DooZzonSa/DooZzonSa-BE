@@ -41,6 +41,15 @@ dependencies {
     // Test
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
     testImplementation 'org.assertj:assertj-core:3.25.1'
+
+    // Spring AI
+    implementation "org.springframework.ai:spring-ai-starter-model-openai"
+}
+
+dependencyManagement {
+    imports {
+        mavenBom "org.springframework.ai:spring-ai-bom:1.1.2"
+    }
 }
 
 test {
