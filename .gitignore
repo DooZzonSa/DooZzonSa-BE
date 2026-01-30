@@ -46,3 +46,4 @@ bin/
 application-local.yml
 application-dev.yml
 CLAUDE.md
+erd_image.png
