@@ -30,10 +30,10 @@ public class EnterprisePolicyItem {
     private Long id;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "enterprise_id", nullable = false, unique = true, foreignKey = @ForeignKey(name = "fk_enterprise_policy_item__enterprise"))
+    @JoinColumn(name = "enterprise_id", nullable = false, unique = false, foreignKey = @ForeignKey(name = "fk_enterprise_policy_item__enterprise"))
     private Enterprise enterprise;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "policy_item_id", nullable = false, unique = true, foreignKey = @ForeignKey(name = "fk_enterprise_policy_item__policy_item"))
+    @JoinColumn(name = "policy_item_id", nullable = false, unique = false, foreignKey = @ForeignKey(name = "fk_enterprise_policy_item__policy_item"))
     private PolicyItem policyItem;
 }
