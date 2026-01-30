@@ -1,12 +1,12 @@
-package com.dozzonsa;
+package com.doozzonsa;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class DozZonsaApplication {
+public class DooZzonSaApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(DozZonsaApplication.class, args);
+        SpringApplication.run(DooZzonSaApplication.class, args);
     }
 }
