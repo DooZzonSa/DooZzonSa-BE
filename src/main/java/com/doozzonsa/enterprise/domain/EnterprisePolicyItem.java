@@ -10,6 +10,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
+import jakarta.persistence.UniqueConstraint;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
@@ -18,7 +19,11 @@ import lombok.NoArgsConstructor;
 
 @Getter
 @Entity
-@Table(name = "enterprise_policy_item")
+@Table(name = "enterprise_policy_item",
+        uniqueConstraints = @UniqueConstraint(
+                name = "uk_enterprise_policy_item",
+                columnNames = {"enterprise_id", "policy_item_id"}
+        ))
 @AllArgsConstructor
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
