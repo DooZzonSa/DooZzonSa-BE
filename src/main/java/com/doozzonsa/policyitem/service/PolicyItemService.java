@@ -55,6 +55,9 @@ public class PolicyItemService {
     }
 
     private int calculateAverageCollectionRate(final PolicyItem policyItem, final int enterpriseCount) {
+        if (enterpriseCount == 0) {
+            return 0;
+        }
         int policyItemCount = enterprisePolicyItemRepository.countByPolicyItem(policyItem);
         return (policyItemCount * 100) / enterpriseCount;
     }
