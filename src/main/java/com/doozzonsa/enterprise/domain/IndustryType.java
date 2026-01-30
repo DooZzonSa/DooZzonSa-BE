@@ -1,5 +1,10 @@
 package com.doozzonsa.enterprise.domain;
 
+import lombok.Getter;
+import lombok.RequiredArgsConstructor;
+
+@Getter
+@RequiredArgsConstructor
 public enum IndustryType {
     FINANCE("금융 / 결제 / 핀테크"),
     ECOMMERCE("전자상거래 / 쇼핑"),
@@ -14,8 +19,4 @@ public enum IndustryType {
     GENERAL_IT("기타 IT / 개발자 플랫폼");
 
     private final String description;
-
-    IndustryType(final String description) {
-        this.description = description;
-    }
 }
