@@ -21,6 +21,11 @@ public enum ErrorCode implements BaseCode {
     403 FORBIDDEN
      */
     ACCESS_DENIED(HttpStatus.FORBIDDEN, "접근 권한이 없습니다."),
+
+    /*
+    404 NOT FOUND
+     */
+    NOT_FOUND(HttpStatus.NOT_FOUND, "요청한 리소스를 찾을 수 없습니다."),
     ;
 
     private final HttpStatus httpStatus;
