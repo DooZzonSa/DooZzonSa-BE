@@ -14,7 +14,6 @@ import org.springframework.http.ResponseEntity;
 @Tag(name = "PolicyIssue", description = "약관 이슈 API")
 public interface PolicyIssueControllerDocs {
 
-
     @Operation(
             summary = "약관 이슈 조회 API",
             description = "약관 이슈를 조회한다"
@@ -65,6 +64,5 @@ public interface PolicyIssueControllerDocs {
             )
     })
     ResponseEntity<SuccessResponse<PolicyIssuesResponse>> readAll();
-
 
 }
