@@ -87,7 +87,7 @@ public interface PolicyItemApi {
 					summary = "요청 예시",
 					value = """
                                     {
-                                      "content": "여기에 개인정보처리방침 원문을 넣으세요..."
+                                      "context": "여기에 개인정보처리방침 원문을 넣으세요..."
                                     }
                                     """
 				)
