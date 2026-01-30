@@ -45,3 +45,4 @@ bin/
 ### APP ###
 application-local.yml
 application-dev.yml
+CLAUDE.md
