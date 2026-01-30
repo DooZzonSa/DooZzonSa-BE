@@ -10,7 +10,6 @@ import com.doozzonsa.policyissue.service.dto.PolicyIssueDto;
 import com.doozzonsa.policyissue.service.dto.PolicyIssuesResponse;
 import com.doozzonsa.policyissue.service.dto.StatisticsDto;
 import java.time.LocalDate;
-import java.time.YearMonth;
 import java.util.List;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
@@ -38,7 +37,6 @@ class PolicyIssueServiceTest {
         void readAll1() {
             // given
             LocalDate now = LocalDate.now();
-            YearMonth currentMonth = YearMonth.now();
 
             PolicyIssue issue1 = new PolicyIssue(
                     1L,
@@ -62,13 +60,6 @@ class PolicyIssueServiceTest {
 
             List<PolicyIssue> mockIssues = List.of(issue1, issue2);
 
-            given(policyIssueRepository.count()).willReturn(15L);
-            given(policyIssueRepository.countByIssueDateBetween(
-                    currentMonth.atDay(1),
-                    currentMonth.atEndOfMonth()
-            )).willReturn(12);
-            given(policyIssueRepository.countByIssueType(IssueType.DATA_BREACH)).willReturn(8);
-            given(policyIssueRepository.countByIssueType(IssueType.ABUSE)).willReturn(7);
             given(policyIssueRepository.findAllByOrderByIssueDateDesc()).willReturn(mockIssues);
 
             // when
@@ -79,10 +70,10 @@ class PolicyIssueServiceTest {
 
             // 통계 검증
             StatisticsDto statistics = result.statistics();
-            assertThat(statistics.totalCount()).isEqualTo(15);
-            assertThat(statistics.thisMonthCount()).isEqualTo(12);
-            assertThat(statistics.dataBreachCount()).isEqualTo(8);
-            assertThat(statistics.abuseCount()).isEqualTo(7);
+            assertThat(statistics.totalCount()).isEqualTo(2);
+            assertThat(statistics.thisMonthCount()).isEqualTo(2);
+            assertThat(statistics.dataBreachCount()).isEqualTo(1);
+            assertThat(statistics.abuseCount()).isEqualTo(1);
 
             // 이슈 목록 검증
             List<PolicyIssueDto> policyIssues = result.policyIssues();
@@ -108,15 +99,6 @@ class PolicyIssueServiceTest {
         @Test
         void readAll2() {
             // given
-            YearMonth currentMonth = YearMonth.now();
-
-            given(policyIssueRepository.count()).willReturn(0L);
-            given(policyIssueRepository.countByIssueDateBetween(
-                    currentMonth.atDay(1),
-                    currentMonth.atEndOfMonth()
-            )).willReturn(0);
-            given(policyIssueRepository.countByIssueType(IssueType.DATA_BREACH)).willReturn(0);
-            given(policyIssueRepository.countByIssueType(IssueType.ABUSE)).willReturn(0);
             given(policyIssueRepository.findAllByOrderByIssueDateDesc()).willReturn(List.of());
 
             // when

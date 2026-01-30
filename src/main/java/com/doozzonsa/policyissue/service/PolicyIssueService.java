@@ -21,11 +21,14 @@ public class PolicyIssueService {
     private final PolicyIssueRepository policyIssueRepository;
 
     public PolicyIssuesResponse readAll() {
-        // 통계 정보 조회
-        int totalCount = countAllIssues();
-        int thisMonthCount = countThisMonthIssues();
-        int dataBreachCount = countByIssueType(IssueType.DATA_BREACH);
-        int abuseCount = countByIssueType(IssueType.ABUSE);
+        // 이슈 목록 조회 (최신순)
+        List<PolicyIssue> policyIssues = policyIssueRepository.findAllByOrderByIssueDateDesc();
+
+        // 통계 정보 계산 (조회 결과 기반)
+        int totalCount = policyIssues.size();
+        int thisMonthCount = countThisMonthIssues(policyIssues);
+        int dataBreachCount = countByIssueType(policyIssues, IssueType.DATA_BREACH);
+        int abuseCount = countByIssueType(policyIssues, IssueType.ABUSE);
 
         StatisticsDto statistics = new StatisticsDto(
                 totalCount,
@@ -34,8 +37,6 @@ public class PolicyIssueService {
                 abuseCount
         );
 
-        // 이슈 목록 조회 (최신순)
-        List<PolicyIssue> policyIssues = policyIssueRepository.findAllByOrderByIssueDateDesc();
         List<PolicyIssueDto> policyIssueDtos = policyIssues.stream()
                 .map(PolicyIssueDto::from)
                 .toList();
@@ -50,20 +51,21 @@ public class PolicyIssueService {
         );
     }
 
-    private int countAllIssues() {
-        return (int) policyIssueRepository.count();
-    }
-
-    private int countThisMonthIssues() {
+    private int countThisMonthIssues(List<PolicyIssue> policyIssues) {
         YearMonth currentMonth = YearMonth.now();
         LocalDate startOfMonth = currentMonth.atDay(1);
         LocalDate endOfMonth = currentMonth.atEndOfMonth();
 
-        return policyIssueRepository.countByIssueDateBetween(startOfMonth, endOfMonth);
+        return (int) policyIssues.stream()
+                .map(PolicyIssue::getIssueDate)
+                .filter(issueDate -> !issueDate.isBefore(startOfMonth) && !issueDate.isAfter(endOfMonth))
+                .count();
     }
 
-    private int countByIssueType(IssueType issueType) {
-        return policyIssueRepository.countByIssueType(issueType);
+    private int countByIssueType(List<PolicyIssue> policyIssues, IssueType issueType) {
+        return (int) policyIssues.stream()
+                .filter(policyIssue -> policyIssue.getIssueType() == issueType)
+                .count();
     }
 
     private String generateThisWeekSummary() {
