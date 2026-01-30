@@ -1,5 +1,8 @@
 package com.doozzonsa.policyissue.domain;
 
+import lombok.Getter;
+
+@Getter
 public enum IssueType {
 
     DATA_BREACH("정보 유출"),
