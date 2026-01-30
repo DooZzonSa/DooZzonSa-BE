@@ -15,6 +15,8 @@ import org.springframework.web.bind.MissingServletRequestParameterException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 import org.springframework.web.method.annotation.MethodArgumentTypeMismatchException;
+import org.springframework.web.servlet.NoHandlerFoundException;
+import org.springframework.web.servlet.resource.NoResourceFoundException;
 
 @Slf4j
 @RestControllerAdvice
@@ -64,6 +66,19 @@ public class GlobalExceptionHandler {
     @ExceptionHandler(HttpMessageNotReadableException.class)
     public ResponseEntity<ErrorResponse> handleHttpMessageNotReadableException(HttpMessageNotReadableException e) {
         return buildErrorResponse(ErrorCode.INVALID_REQUEST_BODY, e.getMessage());
+    }
+
+    @ExceptionHandler(NoResourceFoundException.class)
+    public ResponseEntity<ErrorResponse> handleNoResourceFoundException(NoResourceFoundException e) {
+        String detail = String.format("%s %s", e.getHttpMethod(), e.getMessage());
+        return buildErrorResponse(ErrorCode.NOT_FOUND, detail);
+    }
+
+
+    @ExceptionHandler(NoHandlerFoundException.class)
+    public ResponseEntity<ErrorResponse> handleNoHandlerFoundException(NoHandlerFoundException e) {
+        String detail = String.format("%s %s", e.getHttpMethod(), e.getRequestURL());
+        return buildErrorResponse(ErrorCode.NOT_FOUND, detail);
     }
 
     @ExceptionHandler(Exception.class)
