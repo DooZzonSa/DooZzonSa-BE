@@ -10,10 +10,12 @@ import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
+@Builder
 @Getter
 @Entity
 @Table(name = "policy_item")
@@ -33,4 +35,14 @@ public class PolicyItem {
     @Enumerated(EnumType.STRING)
     @Column(name = "risk_level", nullable = true, length = 255)
     private RiskLevel riskLevel;
+
+    public static PolicyItem create(
+        final String name,
+        final RiskLevel riskLevel
+    ) {
+        return PolicyItem.builder()
+            .name(name)
+            .riskLevel(riskLevel)
+            .build();
+    }
 }

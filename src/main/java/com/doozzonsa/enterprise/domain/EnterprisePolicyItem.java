@@ -13,10 +13,12 @@ import jakarta.persistence.Table;
 import jakarta.persistence.UniqueConstraint;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
+@Builder
 @Getter
 @Entity
 @Table(name = "enterprise_policy_item",
@@ -41,4 +43,14 @@ public class EnterprisePolicyItem {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "policy_item_id", nullable = false, unique = false, foreignKey = @ForeignKey(name = "fk_enterprise_policy_item__policy_item"))
     private PolicyItem policyItem;
+
+    public static EnterprisePolicyItem create(
+        final Enterprise enterprise,
+        final PolicyItem policyItem
+    ) {
+        return EnterprisePolicyItem.builder()
+            .enterprise(enterprise)
+            .policyItem(policyItem)
+            .build();
+    }
 }
