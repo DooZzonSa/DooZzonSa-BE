@@ -18,12 +18,12 @@ import lombok.RequiredArgsConstructor;
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/api/v1/policy-items")
-public class PolicyItemController {
+public class PolicyItemController implements PolicyItemApi{
 
 	private final PolicyAiService policyAiService;
 
 	@PostMapping
-	ResponseEntity<SuccessResponse<PolicyAnalysisResponse>> analysisPolicy(
+	public ResponseEntity<SuccessResponse<PolicyAnalysisResponse>> analysisPolicy(
 		@Valid @RequestBody PolicyAnalysisRequest request
 	) {
 		PolicyAnalysisResponse response = policyAiService.getAnalyzedPolicy(request.context());
