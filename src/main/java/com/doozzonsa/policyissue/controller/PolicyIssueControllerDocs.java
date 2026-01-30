@@ -1,7 +1,7 @@
 package com.doozzonsa.policyissue.controller;
 
 import com.doozzonsa.global.response.dto.SuccessResponse;
-import com.doozzonsa.policyissue.service.dto.PolicyIssuesResponse;
+import com.doozzonsa.policyissue.service.dto.PolicyIssuesDto;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.ExampleObject;
@@ -63,6 +63,6 @@ public interface PolicyIssueControllerDocs {
                     )
             )
     })
-    ResponseEntity<SuccessResponse<PolicyIssuesResponse>> readAll();
+    ResponseEntity<SuccessResponse<PolicyIssuesDto>> readAll();
 
 }

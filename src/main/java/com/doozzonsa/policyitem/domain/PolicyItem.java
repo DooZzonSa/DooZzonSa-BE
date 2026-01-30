@@ -45,4 +45,15 @@ public class PolicyItem {
             .riskLevel(riskLevel)
             .build();
     }
+
+    public boolean isLevelOf(final RiskLevel riskLevel) {
+        return this.riskLevel == riskLevel;
+    }
+
+    public RiskLevel getRiskLevel() {
+        if (this.riskLevel == null) {
+            return RiskLevel.NONE;
+        }
+        return this.riskLevel;
+    }
 }

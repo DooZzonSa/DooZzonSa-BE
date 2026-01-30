@@ -4,7 +4,7 @@ import com.doozzonsa.policyissue.domain.IssueType;
 import com.doozzonsa.policyissue.domain.PolicyIssue;
 import com.doozzonsa.policyissue.repository.PolicyIssueRepository;
 import com.doozzonsa.policyissue.service.dto.PolicyIssueDto;
-import com.doozzonsa.policyissue.service.dto.PolicyIssuesResponse;
+import com.doozzonsa.policyissue.service.dto.PolicyIssuesDto;
 import com.doozzonsa.policyissue.service.dto.StatisticsDto;
 import java.time.LocalDate;
 import java.time.YearMonth;
@@ -20,7 +20,7 @@ public class PolicyIssueService {
 
     private final PolicyIssueRepository policyIssueRepository;
 
-    public PolicyIssuesResponse readAll() {
+    public PolicyIssuesDto readAll() {
         // 이슈 목록 조회 (최신순)
         List<PolicyIssue> policyIssues = policyIssueRepository.findAllByOrderByIssueDateDesc();
 
@@ -44,7 +44,7 @@ public class PolicyIssueService {
         // 이번 주 요약 생성
         String thisWeekSummary = generateThisWeekSummary();
 
-        return new PolicyIssuesResponse(
+        return new PolicyIssuesDto(
                 thisWeekSummary,
                 policyIssueDtos,
                 statistics
