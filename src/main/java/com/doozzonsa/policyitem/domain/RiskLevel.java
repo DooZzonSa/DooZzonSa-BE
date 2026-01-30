@@ -8,7 +8,7 @@ public enum RiskLevel {
     HIGH("높음"),
     MID("중간"),
     LOW("낮음"),
-    ;
+    NONE("없음");
 
     private final String level;
 
