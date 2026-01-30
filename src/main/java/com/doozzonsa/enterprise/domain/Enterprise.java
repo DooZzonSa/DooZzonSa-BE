@@ -10,10 +10,12 @@ import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
+@Builder
 @Getter
 @Entity
 @Table(name = "enterprise")
@@ -40,4 +42,18 @@ public class Enterprise {
     @Enumerated(EnumType.STRING)
     @Column(name = "industry_type", nullable = false, length = 255)
     private IndustryType industryType;
+
+    public static Enterprise create(
+        final String name,
+        final Scale scale,
+        final String country,
+        final IndustryType industryType
+    ) {
+        return Enterprise.builder()
+            .name(name)
+            .scale(scale)
+            .country(country)
+            .industryType(industryType)
+            .build();
+    }
 }
