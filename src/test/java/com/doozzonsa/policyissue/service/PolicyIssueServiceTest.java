@@ -7,7 +7,7 @@ import com.doozzonsa.policyissue.domain.IssueType;
 import com.doozzonsa.policyissue.domain.PolicyIssue;
 import com.doozzonsa.policyissue.repository.PolicyIssueRepository;
 import com.doozzonsa.policyissue.service.dto.PolicyIssueDto;
-import com.doozzonsa.policyissue.service.dto.PolicyIssuesResponse;
+import com.doozzonsa.policyissue.service.dto.PolicyIssuesDto;
 import com.doozzonsa.policyissue.service.dto.StatisticsDto;
 import java.time.LocalDate;
 import java.util.List;
@@ -63,7 +63,7 @@ class PolicyIssueServiceTest {
             given(policyIssueRepository.findAllByOrderByIssueDateDesc()).willReturn(mockIssues);
 
             // when
-            PolicyIssuesResponse result = policyIssueService.readAll();
+            PolicyIssuesDto result = policyIssueService.readAll();
 
             // then
             assertThat(result).isNotNull();
@@ -102,7 +102,7 @@ class PolicyIssueServiceTest {
             given(policyIssueRepository.findAllByOrderByIssueDateDesc()).willReturn(List.of());
 
             // when
-            PolicyIssuesResponse result = policyIssueService.readAll();
+            PolicyIssuesDto result = policyIssueService.readAll();
 
             // then
             assertThat(result).isNotNull();
