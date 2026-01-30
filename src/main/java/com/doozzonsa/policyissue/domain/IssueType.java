@@ -1,4 +1,4 @@
-package com.doozzonsa.privatepolicy.domain;
+package com.doozzonsa.policyissue.domain;
 
 public enum IssueType {
 

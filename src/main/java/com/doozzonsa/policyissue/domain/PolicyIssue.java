@@ -1,4 +1,4 @@
-package com.doozzonsa.privatepolicy.domain;
+package com.doozzonsa.policyissue.domain;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -17,11 +17,11 @@ import lombok.NoArgsConstructor;
 
 @Getter
 @Entity
-@Table(name = "private_policy")
+@Table(name = "policy_issue")
 @AllArgsConstructor
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-public class PrivatePolicy {
+public class PolicyIssue {
 
     @Id
     @EqualsAndHashCode.Include
