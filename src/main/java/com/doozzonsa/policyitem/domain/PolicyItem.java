@@ -33,4 +33,8 @@ public class PolicyItem {
     @Enumerated(EnumType.STRING)
     @Column(name = "risk_level", nullable = true, length = 255)
     private RiskLevel riskLevel;
+
+    public boolean isLevelOf(final RiskLevel riskLevel) {
+        return this.riskLevel == riskLevel;
+    }
 }

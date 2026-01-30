@@ -1,5 +1,8 @@
 package com.doozzonsa.policyitem.domain;
 
+import lombok.Getter;
+
+@Getter
 public enum RiskLevel {
 
     HIGH("높음"),
