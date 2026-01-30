@@ -9,7 +9,6 @@ import com.doozzonsa.policyitem.service.dto.PolicyItemDto;
 import com.doozzonsa.policyitem.service.dto.PolicyItemNameDto;
 import com.doozzonsa.policyitem.service.dto.PolicyItemStatisticsDto;
 import com.doozzonsa.policyitem.service.dto.RiskLevelDto;
-import java.util.Arrays;
 import java.util.List;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -41,7 +40,7 @@ public class PolicyItemService {
     }
 
     private List<RiskLevelDto> getRiskLevelDtos(final List<PolicyItem> policyItems) {
-        return Arrays.stream(RiskLevel.values())
+        return RiskLevel.getValidValues().stream()
                 .map(riskLevel -> {
                     List<PolicyItemNameDto> policyItemNames = policyItems.stream()
                             .filter(policyItem -> policyItem.isLevelOf(riskLevel))

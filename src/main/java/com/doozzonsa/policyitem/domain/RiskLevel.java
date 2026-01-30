@@ -1,5 +1,6 @@
 package com.doozzonsa.policyitem.domain;
 
+import java.util.List;
 import lombok.Getter;
 
 @Getter
@@ -14,5 +15,9 @@ public enum RiskLevel {
 
     RiskLevel(final String level) {
         this.level = level;
+    }
+
+    public static List<RiskLevel> getValidValues() {
+        return List.of(HIGH, MID, LOW);
     }
 }
