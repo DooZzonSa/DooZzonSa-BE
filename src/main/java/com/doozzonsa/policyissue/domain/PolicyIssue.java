@@ -35,13 +35,13 @@ public class PolicyIssue {
     @Column(name = "issue_type", nullable = false, length = 255)
     private IssueType issueType;
 
-    @Column(name = "summary", nullable = false, length = 65535)
+    @Column(name = "summary", nullable = false, length = 2048)
     private String summary;
 
     @Column(name = "source", nullable = false, length = 255)
     private String source;
 
-    @Column(name = "url", nullable = false, length = 65535)
+    @Column(name = "url", nullable = false, length = 2048)
     private String url;
 
     @Column(name = "issue_date", nullable = false)
