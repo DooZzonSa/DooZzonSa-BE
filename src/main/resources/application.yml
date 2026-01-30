@@ -8,8 +8,8 @@ spring:
     open-in-view: false
     properties:
       hibernate:
-        format_sql: true
         dialect: org.hibernate.dialect.MySQLDialect
+        format_sql: true
     show-sql: true
     hibernate:
       ddl-auto: update
