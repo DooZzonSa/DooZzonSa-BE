@@ -53,7 +53,3 @@
 ### 3️⃣ 수집 통계 - 기준선 제공
 
 <img width="1920" height="1080" alt="아스키톤-약간(YAKKAN) pptx (6)" src="https://github.com/user-attachments/assets/e2667932-f122-4512-802d-b2c504159c9d" />
-
-## 👥 팀 소개
-
-**두바이쫀득사자** 프론트엔드 팀
