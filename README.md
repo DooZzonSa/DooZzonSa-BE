@@ -28,13 +28,13 @@
      <img width="540" height="860" alt="yakkan_seaniiio" src="https://github.com/seaniiio.png" /><br/>
       <b>💻 김시원</b><br/>
       <code>Server Developer</code><br/>
-      <a href="https://github.com/sae2say">GitHub | @sae2say</a>
+      <a href="https://github.com/seaniiio">GitHub | @seaniiio</a>
     </td>
     <td align="center" width="300">
       <img width="540" height="860" alt="yakkan_sae2say" src="https://github.com/sae2say.png" /><br/>
       <b>💻 백세희</b><br/>
       <code>Server Developer</code><br/>
-      <a href="https://github.com/dietken1">GitHub | @dietken1</a>
+      <a href="https://github.com/sae2say">GitHub | @sae2say</a>
     </td>
   </tr>
 </table>
